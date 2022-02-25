@@ -1,8 +1,11 @@
 {
   "name": "postcss-inset",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Use the inset property in CSS",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "contributors": [
+    "Luca Morelli <luca.morelli@ovalmoney.com"
+  ],
   "license": "CC0-1.0",
   "repository": "jonathantneal/postcss-inset",
   "homepage": "https://github.com/jonathantneal/postcss-inset#readme",
@@ -23,7 +26,7 @@
   "scripts": {
     "clean": "git clean -X -d -f",
     "build": "rollup index.js --file index.cjs --format cjs --exports default && rollup index.js --file index.mjs --format es --exports default",
-    "prepublish": "npm test",
+    "prepare": "npm test",
     "lint:package": "package-check",
     "lint:js": "eslint --cache --ignore-pattern .gitignore",
     "pretest": "npm run lint:package && npm run lint:js && npm run build",
