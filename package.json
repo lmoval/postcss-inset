@@ -7,37 +7,51 @@
   "repository": "jonathantneal/postcss-inset",
   "homepage": "https://github.com/jonathantneal/postcss-inset#readme",
   "bugs": "https://github.com/jonathantneal/postcss-inset/issues",
-  "main": "index.cjs.js",
-  "module": "index.es.mjs",
+  "main": "./index.cjs",
+  "module": "./index.mjs",
   "files": [
-    "index.js",
-    "index.cjs.js",
-    "index.es.mjs"
+    "index.d.ts",
+    "index.cjs",
+    "index.mjs"
   ],
+  "types": "./index.d.ts",
+  "exports": {
+    "require": "./index.cjs",
+    "import": "./index.mjs",
+    "default": "./index.mjs"
+  },
   "scripts": {
     "clean": "git clean -X -d -f",
-    "build": "rollup index.js --file index.cjs.js --format cjs --exports default && rollup index.js --file index.es.mjs --format es --exports default",
+    "build": "rollup index.js --file index.cjs --format cjs --exports default && rollup index.js --file index.mjs --format es --exports default",
     "prepublish": "npm test",
-    "test": "echo 'Running tests...'; npm run test:js && npm run test:tape",
-    "test:js": "eslint *.js --cache --ignore-pattern .gitignore",
-    "test:tape": "postcss-tape"
+    "lint:package": "package-check",
+    "lint:js": "eslint --cache --ignore-pattern .gitignore",
+    "pretest": "npm run lint:package && npm run lint:js && npm run build",
+    "test": "postcss-tape"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=10.0.0"
   },
   "peerDependencies": {
     "postcss": "^8.4.6"
   },
   "devDependencies": {
-    "eslint": "^3.19.0",
-    "eslint-config-dev": "2.0.0",
+    "@skypack/package-check": "^0.2.2",
+    "eslint": "^7.32.0",
     "postcss": "^8.4.6",
     "postcss-tape": "^6.0.1",
     "pre-commit": "^1.2.2",
     "rollup": "^2.68.0"
   },
   "eslintConfig": {
-    "extends": "dev"
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 9,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "modules": true
+      }
+    }
   },
   "keywords": [
     "postcss",

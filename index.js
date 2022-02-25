@@ -1,4 +1,4 @@
-const creator = () => {
+const plugin = () => {
 	// side properties
 	const properties = ['top', 'right', 'bottom', 'left'];
 
@@ -42,6 +42,6 @@ const creator = () => {
 	}
 }
 
-creator.postcss = true
+plugin.postcss = true
 
-export default creator
+export default plugin
