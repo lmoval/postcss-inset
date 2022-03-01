@@ -26,7 +26,7 @@
   "scripts": {
     "clean": "git clean -X -d -f",
     "build": "rollup index.js --file index.cjs --format cjs --exports default && rollup index.js --file index.mjs --format es --exports default",
-    "prepare": "npm test",
+    "prepublishOnly": "npm test",
     "lint:package": "package-check",
     "lint:js": "eslint --cache --ignore-pattern .gitignore",
     "pretest": "npm run lint:package && npm run lint:js && npm run build",
